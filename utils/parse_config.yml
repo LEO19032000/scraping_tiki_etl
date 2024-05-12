@@ -1,0 +1,10 @@
+config_1:
+  path:
+    website_path: https://tiki.vn
+    save_path: local-tiki-
+  page:  
+    page_number: 5
+  dataframe:
+    header: False
+    encoding: "utf-8-sig"
+    index: False
