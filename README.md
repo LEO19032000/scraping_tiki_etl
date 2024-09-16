@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Description
 
 This ETL pipeline example demonstrates how to extract data from the front-end and store it in a MySQL database.
@@ -42,3 +43,7 @@ demo\Scripts\Activate
 ```shell
 python3 main_build.py
 ```
+=======
+# Tiki_scrapper_pipeline
+This ETL pipeline example demonstrates how to extract data from the front-end and store it in a MySQL database.
+>>>>>>> 97bad75 (Initial commit)
