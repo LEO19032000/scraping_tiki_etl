@@ -3,25 +3,55 @@ import re
 from urllib.request import urlopen
 import logging
 
+# Set up the logger
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
-all_list = []
-
 def menu_extract(link):
-    html = urlopen(link)
-    bs = BeautifulSoup(html, 'html.parser')
-    # extract a list of category
-    menu_list = bs.find_all("div", attrs={"class":re.compile('StyledItemV2')})
-    # menu_list = bs.find_all('div', class_='StyledItemV2')
+    try:
+        # Fetch and parse the HTML
+        html = urlopen(link)
+        bs = BeautifulSoup(html, 'html.parser')
 
-    for menu in menu_list:
-        # print(menu.title)
-        # menu.next()
+        # Find all sections with the class "StyledListItem"
+        menu_sections = bs.find_all('div', class_=re.compile('StyledListItem'))
 
-        menu_item = menu.find_all('a', href= True)
-        all_list.append(menu_item[0]['href'])
-    return all_list
-# print on when a build done successfully
+        # Initialize an empty list to store the links
+        menu_list = []
+
+        # Loop through each section to find the one containing "Danh mục"
+        for section in menu_sections:
+            # Find the title div within the section
+            title_div = section.find('div', class_=re.compile('StyledTitle'))
+
+            # Check if the title div contains the exact text "Danh mục"
+            if title_div and title_div.get_text(strip=True) == "Danh mục":
+                
+                # Find all links within this "Danh mục" section
+                menu_items = section.find_all('a', href=True)
+
+                # Loop through each menu item and collect the href links
+                for item in menu_items:
+                    href = item.get('href')
+                    title = item.get('title', 'No Title')
+
+                    # Add the href link to the list
+                    if href:
+                        menu_list.append(href)
+
+                # Once "Danh mục" is found, no need to check other sections
+                break
+
+        if not menu_list:
+            logger.info("No menu items found under")
+
+        return menu_list
+        
+
+    except Exception as e:
+        logger.error(f"An error occurred: {e}")
+        return []
+
+# Example usage: Replace 'https://tiki.vn' with the actual URL you are using
 logger.info("Starting to crawl...")
-
-
+logger.info("Scrawling data...")

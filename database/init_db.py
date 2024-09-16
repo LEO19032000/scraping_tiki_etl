@@ -1,14 +1,14 @@
-from tikidb_config import read_db_config
+from utils.tikidb_config import read_db_config
 import mysql.connector
 from mysql.connector import Error
 
 # db_execute = 'create database tiki_scrapper_db'
-table_execute = 'create table products (id VARCHAR(255),\
-		brand VARCHAR(255),\
+table_execute = 'create table products (\
+		id VARCHAR(255),\
 		category TEXT(255),\
 		price VARCHAR(255),\
 		title VARCHAR(255),\
-		review VARCHAR(255),\
+		discount VARCHAR(10),\
 		rating VARCHAR(255),\
 		image_link TEXT(255),\
 		product_link TEXT(255),\

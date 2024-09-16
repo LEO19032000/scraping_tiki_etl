@@ -1,64 +1,44 @@
 # Description
 
-This example of ETL pipeline, it is trying to store data that extracting in front-end into MySQL Database.
+This ETL pipeline example demonstrates how to extract data from the front-end and store it in a MySQL database.
 
 ## Technique
 
 - Python3
-- Lib: BeautifulSoup, urllib, pandas, pyyml
-`pip3 install requirements.txt`
+- Lib: BeautifulSoup, urllib, pandas, pyyml, requests 
+`pip3 install library.txt`
 
 - Install virtual environment
 
 ```shell
-  python3 -m venv demo
+  python -m venv demo
 ```
 
 - Database: Mysql
-  - Install Mysql, MysqlConnector or Using Docker Container
+  - I using a Docker container 
 
 ```shell
   docker pull mysql
-  docker run --name mysql_container -e MYSQL_ROOT_PASSWORD="RootAccount123" -d mysql
-  docker ps
+  docker run --name mysql_container -e MYSQL_ROOT_PASSWORD="123456" -d mysql
 ```
 
-- Database Management: phpMyadmin / Dbeaver
-  - Install phpmyadmin package for further manage databases
-  - Use default local IP and root user to login.
-- Environment: Any
-- Editor: Any
+## Workflow Steps
 
-## Workflow
-
-- Extract category in the menu, an output is list of url (Subcategory)
-- Using each input as parameter for page_parsing, which is parsing data of every products on fixed number page (customable)
-- Store raw data into MySQL
+- Extract Categories: Start by extracting categories from the menu, resulting in a list of URLs (subcategories).
+- Page Parsing: Use each URL as a parameter for page parsing to extract data from each product over a set number of pages (configurable).
+- Store Data: Insert the raw extracted data into the MySQL database.
 
 ## Start the Pipeline
 
 - Start the Python venv `(demo)`
 
 ```shell
-source demo/bin/activate
+demo\Scripts\Activate
+
 ```
 
-- Start the `main_build.py` file
+- Start the `main_build.py` file, run main_buid.py in visual studio code or shell 
 
 ```shell
 python3 main_build.py
 ```
-
-## Next step
-
-- clean raw data for useable
-- create pipeline for scheduling run
-- apply model, analysis
-
-
-## Changelog
-
--  [v1.0 Init Version - 2019]()
--  [v2.0 Refactor Version - 2024]()
--  
-![alt text](Version2019.png)

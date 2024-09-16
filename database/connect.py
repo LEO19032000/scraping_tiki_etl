@@ -1,8 +1,13 @@
 from mysql.connector import MySQLConnection, Error
-from tikidb_config import read_db_config
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from utils.tikidb_config import read_db_config
+
 
 def connect_db():
 	db_config = read_db_config()
+	
 	conn = None
 	try:
 		print('connecting to mysql database...')
