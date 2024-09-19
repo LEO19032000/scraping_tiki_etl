@@ -3,6 +3,7 @@ import os
 
 def read_db_config(filename='db_config.ini', section='mysql'):
     parser = ConfigParser()
+    
     # Construct the full path to the configuration file
     config_file = os.path.join(os.path.dirname(__file__), '..', 'database', filename)
     parser.read(config_file)
@@ -15,3 +16,4 @@ def read_db_config(filename='db_config.ini', section='mysql'):
     else:
         raise Exception('{0} not found in the {1} file'.format(section, config_file))
     return db
+print(read_db_config(filename='db_config.ini', section='mysql'))

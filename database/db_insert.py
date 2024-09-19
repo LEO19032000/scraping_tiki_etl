@@ -1,12 +1,8 @@
-from utils.tikidb_config import read_db_config
-from database.init_db import db_init
+from parsing.tikidb_config import read_db_config
 import mysql.connector
 import sys
   
 def insert_data(data):
-
-	# Call db_init to ensure the table exists before inserting data
-	db_init()
 	
 	query = "INSERT INTO products(id,category,price,title,discount,rating,image_link,product_link,from_page_link)"\
 		"VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"

@@ -52,6 +52,4 @@ def menu_extract(link):
         logger.error(f"An error occurred: {e}")
         return []
 
-# Example usage: Replace 'https://tiki.vn' with the actual URL you are using
-logger.info("Starting to crawl...")
 logger.info("Scrawling data...")

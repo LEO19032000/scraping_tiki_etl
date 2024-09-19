@@ -2,8 +2,7 @@ from mysql.connector import MySQLConnection, Error
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from utils.tikidb_config import read_db_config
-
+from parsing.tikidb_config import read_db_config
 
 def connect_db():
 	db_config = read_db_config()
@@ -23,6 +22,4 @@ def connect_db():
 			conn.close()
 			print('connection closed')
 
-if __name__ == '__main__':
-	connect_db()
 

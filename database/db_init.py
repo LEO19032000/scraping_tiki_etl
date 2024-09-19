@@ -1,4 +1,4 @@
-from utils.tikidb_config import read_db_config
+from parsing.tikidb_config import read_db_config
 import mysql.connector
 from mysql.connector import Error
 
